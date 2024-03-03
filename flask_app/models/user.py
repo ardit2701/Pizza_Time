@@ -6,7 +6,7 @@ PASWORD_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 
 class User:
-    db_name = "pizzadb"
+    db_name = "pizzadb1"
     def __init__(self, data):
         self.id = data['id']
         self.firstName = data['firstName']
@@ -15,6 +15,7 @@ class User:
         self.address = data['addres']
         self.city = data['city']
         self.state = data['state']
+        self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
