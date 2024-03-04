@@ -4,8 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>    
+
 </head>
 <body>
+    <nav class="d-flex justify-content-around bg-dark text-white align-items-center">    
+        <h1>Pizza King</h1>
+        <a class="text-decoration-none text-white" href="/books">Home</a>
+        <a class="text-decoration-none text-white" href="/books">Order</a>
+        <a class="text-decoration-none text-white" href="/books">Account</a>
+        <a class="text-decoration-none text-white" href="/logout">Logout</a>
+    </nav>
     <section class="h-100 h-custom gradient-custom-2">
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
@@ -33,6 +43,7 @@
                             </div>
       
                           </div>
+      
                         <div class="mb-4 pb-2">
                           <div class="form-outline">
                             <input type="text" id="form3Examplev4" class="form-control form-control-lg" />
@@ -70,17 +81,6 @@
                     <div class="col-lg-6 bg-indigo text-white">
                       <div class="p-5">
                         <h3 class="fw-normal mb-5">Past Orders</h3>
-                        <input type="date">
-                        <input type="checkbox" id="favorites" name="favorites" value="Favorites">
-                        <label for="favorites"> Favorites</label><br>
-                      </div>
-                       <div>
-                        <input type="date">
-                        <input type="checkbox" id="favorites" name="favorites" value="Favorites">
-                        <label for="favorites"> Favorites</label><br>
-                        <button type="button" class="btn btn-light btn-lg"
-                          data-mdb-ripple-color="dark">Register</button>
-      
                       </div>
                     </div>
                   </div>
