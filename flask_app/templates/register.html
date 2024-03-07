@@ -10,8 +10,8 @@
   <div class="d-flex flex-column align-items-center justify-content-center">
     <form action="/register" method="post" class="w-50 m-auto mt-5">
         <div class="mb-3">
-            <label for="firstName" class="form-label">First Name</label>
-            <input type="text" name="firstName" class="form-control" id="firstName" >
+            <label for="first_name" class="form-label">First Name</label>
+            <input type="text" name="first_name" class="form-control" id="first_name" >
            
           </div>
           {% with messages = get_flashed_messages(category_filter=["nameRegister"]) %}
@@ -24,11 +24,11 @@
           {% endif %}
           {% endwith %}
           <div class="mb-3">
-            <label for="lastName" class="form-label">Last name</label>
-            <input type="text" name="lastName" class="form-control" id="lastName" >
+            <label for="last_name" class="form-label">Last name</label>
+            <input type="text" name="last_name" class="form-control" id="last_name" >
            
           </div>
-          {% with messages = get_flashed_messages(category_filter=["lastNameRegister"]) %}
+          {% with messages = get_flashed_messages(category_filter=["last_nameRegister"]) %}
           {% if messages %}
               
               {% for message in messages %}
@@ -53,7 +53,7 @@
         {% endwith %}
         <div class="mb-3">
           <label for="address" class="form-label">Address</label>
-          <input type="addres" name="addres" class="form-control" id="addres" >
+          <input type="address" name="address" class="form-control" id="address" >
          
         </div>
         {% with messages = get_flashed_messages(category_filter=["addressRegister"]) %}
@@ -69,7 +69,7 @@
               <label for="city" class="form-label">City</label>
               <input type="city" name="city" class="form-control" id="city" >
               <!--- Albania states -->
-              <select id="country-state" name="country-state">
+              <select id="state" name="state">
                  <option value="">Select State</option>
                  <option value="01">Shqiperi</option>
                  <option value="09">Greqi</option>
@@ -99,8 +99,8 @@
       <input type="password" name="password" class="form-control" id="password" required>
     </div>
     <div class="mb-3">
-      <label for="confirmPassword" class="form-label">Confirm Password</label>
-      <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" required>
+      <label for="confirm_password" class="form-label">Confirm Password</label>
+      <input type="password" name="confirm_password" class="form-control" id="confirm_password" required>
       <p id="passwordMismatch" class="text-danger text-center"></p>
     </div>
     
