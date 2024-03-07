@@ -38,7 +38,7 @@
     </nav>
 
     <div class="d-flex flex-column align-items-center justify-content-center">
-        <form action="/pizza" method="post" class="w-50 m-auto mt-5">
+        <form action="/order" method="post" class="w-50 m-auto mt-5">
 
             <div class="mb-3">
                 <label for="method" class="form-label">Method</label>
@@ -104,75 +104,76 @@
                             <label class="form-check-label">Pepperoni</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topping" value="mushrooms">
+                            <input class="form-check-input" type="checkbox" name="topping[]" value="mushrooms">
                             <label class="form-check-label">Mushrooms</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topping" value="mushrooms">
+                            <input class="form-check-input" type="checkbox" name="topping[]" value="mushrooms">
                             <label class="form-check-label">Mushrooms</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topping" value="mushrooms">
+                            <input class="form-check-input" type="checkbox" name="topping[]" value="mushrooms">
                             <label class="form-check-label">Mushrooms</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topping" value="mushrooms">
+                            <input class="form-check-input" type="checkbox" name="topping[]" value="mushrooms">
                             <label class="form-check-label">Mushrooms</label>
                         </div>
 
                     </div>
                     <div class="col-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topping" value="pepperoni">
+                            <input class="form-check-input" type="checkbox" name="topping[]" value="pepperoni">
                             <label class="form-check-label">Pepperoni</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topping" value="mushrooms">
+                            <input class="form-check-input" type="checkbox" name="topping[]" value="mushrooms">
                             <label class="form-check-label">Mushrooms</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topping" value="pepperoni">
+                            <input class="form-check-input" type="checkbox" name="topping[]" value="pepperoni">
                             <label class="form-check-label">Pepperoni</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topping" value="mushrooms">
+                            <input class="form-check-input" type="checkbox" name="topping[]" value="mushrooms">
                             <label class="form-check-label">Mushrooms</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topping" value="mushrooms">
+                            <input class="form-check-input" type="checkbox" name="topping[]" value="mushrooms">
                             <label class="form-check-label">Mushrooms</label>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topping" value="pepperoni">
+                            <input class="form-check-input" type="checkbox" name="topping[]" value="pepperoni">
                             <label class="form-check-label">Pepperoni</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topping" value="mushrooms">
+                            <input class="form-check-input" type="checkbox" name="topping[]" value="mushrooms">
                             <label class="form-check-label">Mushrooms</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topping" value="mushrooms">
+                            <input class="form-check-input" type="checkbox" name="topping[]"  value="mushrooms">
                             <label class="form-check-label">Mushrooms</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topping" value="mushrooms">
+                            <input class="form-check-input" type="checkbox" name="topping[]" value="mushrooms">
                             <label class="form-check-label">Mushrooms</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="topping" value="mushrooms">
+                            <input class="form-check-input" type="checkbox" name="topping[]" value="mushrooms">
                             <label class="form-check-label">Mushrooms</label>
                         </div>
                     </div>
                 </div>
             </div>
+    
+            <div class="container">
+                <button class="btn btn-primary">Create pizza</button>
+            </div>
+        </form>
     </div>
-    <div class="container">
-        <button type="submit" class="btn btn-primary">Create pizza</button>
-    </div>
-    </form>
-    </div>
+</div>
 </body>
 
 </html>
