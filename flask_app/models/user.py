@@ -23,6 +23,7 @@ class User:
         self.confirm_password = data["confirm_password"]
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
+        self.phone_number = data["phone_number"]
 
     @classmethod
     def get_user_by_email(cls, data):
@@ -34,7 +35,7 @@ class User:
 
     @classmethod
     def get_user_by_id(cls, data):
-        query = "SELECT * FROM users where id = %(id)s;"
+        query = "SELECT * FROM users where user_id = %(id)s;"
         result = connectToMySQL(cls.db_name).query_db(query, data)
         if result:
             return result[0]
@@ -42,7 +43,7 @@ class User:
 
     @classmethod
     def create(cls, data):
-        query = "INSERT INTO users (first_name, last_name, email, address, city, state, password, confirm_password) VALUES (%(first_name)s, %(last_name)s, %(email)s,%(address)s,%(city)s,%(state)s, %(password)s, %(confirm_password)s );"
+        query = "INSERT INTO users (first_name, last_name, email, address, city, state, password, confirm_password, phone_number) VALUES (%(first_name)s, %(last_name)s, %(email)s,%(address)s,%(city)s,%(state)s, %(password)s, %(confirm_password)s, %(phone_number)s );"
         return connectToMySQL(cls.db_name).query_db(query, data)
 
     @classmethod

@@ -58,7 +58,9 @@ def loginAdmin():
 def loginPageAdmin():
     if "user_id" in session:
         pizzas = Pizza.get_all()
-        return render_template("adminPage.html", pizzas = pizzas)
+        data = {"id": session["user_id"]}
+        loggedUser=User.get_user_by_id(data)
+        return render_template("adminPage.html", pizzas = pizzas,loggedUser = loggedUser )
     return render_template("adminLogin.html")
 
 

@@ -50,6 +50,7 @@ def register():
         "confirm_password": bcrypt.generate_password_hash(
             request.form["confirm_password"]
         ),
+        "phone_number": request.form["phonenumber"]
     }
     session["user_id"] = User.create(data)
     return redirect("/")
