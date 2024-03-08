@@ -49,40 +49,50 @@ pizza_orders = []
 #     return redirect("pizza.html")
 
 
-@app.route("/pizza", methods=["POST"])
+@app.route("/pizza",)
 def validation_page():
     # Retrieve the order details from the database (replace with actual database interaction)
-    last_order = pizza_orders[-1] if pizza_orders else None
-    return render_template("pizza.html", order=last_order)
+    last_order = Pizza.getLastOrder()
+    return render_template("pizza.html", pizza=last_order)
 
 
 @app.route("/order", methods=["POST"])
 def createPizza():
     if "user_id" not in session:
         return redirect("/")
-    # if not Pizza.validate_pizza(request.form):
-    #     return redirect(request.referrer)
-    data = {
+
+    # Extract pizza details from the form
+    pizza_data = {
         "method": request.form["method"],
         "size": request.form["size"],
         "crust": request.form["crust"],
         "quantity": request.form["quantity"],
-        "user_id": session["user_id"],  # id e personit te loguar
+        "user_id": session["user_id"],
     }
-    id = Pizza.create(data)
-    
-    dataTop = {
-        "pizza_id": id,
-        "toping": request.form["topping"]
-    }
-    Pizza.addTopping(dataTop)
+
+    # Create the pizza and retrieve the pizza ID
+    pizza_id = Pizza.create(pizza_data)
+
+    # Extract selected toppings from the form
+    # selected_toppings = request.form.getlist("topping")
+
+    # Create records in PizzaToppings for each selected topping
+    # for topping_id in selected_toppings:
+    #     data_top = {"pizza_id": pizza_id, "topping_id": topping_id}
+    #     Pizza.addTopping(data_top)
+    #     order = {"method": pizza_data["method"],
+    #          "size": pizza_data["size"],
+    #          "crust": pizza_data["crust"],
+    #          "quantity": pizza_data["quantity"],
+    #          "toppings": selected_toppings} 
 
     return redirect("/pizza")
 
 
 
+
 @app.route("/pizza/<int:id>")
-def viewpizza(id):
+def viewPizza(id):
     if "user_id" not in session:
         return redirect("/")
     data = {"id": id, "pizza_id": id}
@@ -91,7 +101,7 @@ def viewpizza(id):
 
 
 @app.route("/pizza/delete/<int:id>")
-def deletepizza(id):
+def deletePizza(id):
     if "user_id" not in session:
         return redirect("/")
     data = {

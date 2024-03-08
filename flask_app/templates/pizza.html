@@ -18,14 +18,17 @@
         <a class="text-decoration-none text-white" href="/logout">Logout</a>
     </nav>
 
-    <div class="container mt-5">
-        <h2>Your Pizza Order</h2>
-        <p>Method: {{ order.method }}</p>
-        <p>Crust: {{ order.crust }}</p>
-        <p>Size: {{ order.size }}</p>
-        <p>Quantity: {{ order.quantity }}</p>
-        <p>Toppings: {{ ', '.join(order.toppings) }}</p>
-    </div>
+    <tbody>
+    <tr>
+        <th scope="row">{{ pizza.method }}</th>
+        <td>{{ pizza.crust }}</td>
+        <td>{{ pizza.size }}</td>
+        <td>{{ pizza.quantity }}</td>
+        <td>{{ pizza.toppings }}</td>
+        <td><a class="btn btn-warning" href="/edit/pizza/{{ pizza.id }}">Edit</a></td>
+    </tr>
+</tbody>
+
 </body>
 
 </html>

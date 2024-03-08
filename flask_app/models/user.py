@@ -9,7 +9,7 @@ PASWORD_REGEX = re.compile(r"^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$")
 
 
 class User:
-    db_name = "mvcuserpizza1"
+    db_name = "mvcuserpizzaaaa"
 
     def __init__(self, data):
         self.id = data["id"]
@@ -74,6 +74,9 @@ class User:
             is_valid = False
         if len(user["password"]) < 1:
             flash("Password is required!", "passwordRegister")
+            is_valid = False
+        if user["password"] != user["confirm_password"]:
+            flash("Passwords do not match!", "confirm_passwordRegister")
             is_valid = False
         if len(user["first_name"]) < 1:
             flash("First name is required!", "nameRegister")
