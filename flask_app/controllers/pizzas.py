@@ -48,11 +48,18 @@ pizza_orders = []
 #     # Redirect to the validation page
 #     return redirect("pizza.html")
 
-
-@app.route("/pizza",)
+@app.route("/pizza")
 def validation_page():
-    # Retrieve the order details from the database (replace with actual database interaction)
-    last_order = Pizza.getLastOrder()
+    # Retrieve the last pizza order from the database using your custom method
+    last_order_data = Pizza.getLastOrder()
+
+    # Create a Pizza object from the retrieved data
+    if last_order_data:
+        last_order = Pizza(last_order_data)
+    else:
+        last_order = None
+
+    # Pass the last pizza order to the pizza.html template
     return render_template("pizza.html", pizza=last_order)
 
 

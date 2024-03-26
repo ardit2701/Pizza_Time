@@ -7,13 +7,13 @@ class Pizza:
     db_name = "mvcuserpizzaaaa"
 
     def __init__(self, data):
-        self.id = data["pizza_id"]
-        self.method = data["method"]
-        self.size = data["size"]
-        self.crust = data["crust"]
-        self.quantity = data["quantity"]
-        self.created_at = data["created_at"]
-        self.updated_at = data["updated_at"]
+        self.id = data.get("pizza_id")  # Use .get() method to handle missing keys gracefully
+        self.method = data.get("method")
+        self.size = data.get("size")
+        self.crust = data.get("crust")
+        self.quantity = data.get("quantity")
+        self.created_at = data.get("created_at")
+        self.updated_at = data.get("updated_at")  # You can handle the missing key here
 
     @classmethod
     def create(cls, data):
@@ -27,6 +27,7 @@ class Pizza:
         if result:
             return result[0]
         return False
+
 
     @classmethod
     def get_all(cls):
