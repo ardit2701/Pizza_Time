@@ -12,15 +12,28 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
+        .active {
+            color: red !important; /* Change the color as desired */
+        }
     </style>
 </head>
 <body>
     <nav class="d-flex justify-content-around bg-dark text-white align-items-center">
-        <h1>Pizza King</h1>
-        <a class="text-decoration-none text-white" href="/pizzas">Home</a>
+        <h1>Pizza King🍕</h1>
+        <a class="text-decoration-none text-white" href="/pizzas" id="home-link">Home</a>
         <a class="text-decoration-none text-white" href="/profile">Account</a>
         <a class="text-decoration-none text-white" href="/logout">Logout</a>
     </nav>
+
+    <script>
+        // Get the current URL path
+        const path = window.location.pathname;
+        
+        // Check if the URL path is '/pizzas' and add the 'active' class to the 'Home' link
+        if (path === '/pizzas') {
+            document.getElementById('home-link').classList.add('active');
+        }
+    </script>
    
     <div class="card-container" style="display: flex; justify-content: space-around; margin-bottom: 8px;">
         <div class="card" style="width: 250px; height: 300px;">

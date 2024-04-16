@@ -10,6 +10,7 @@ from flask_app.models.user import User
 bcrypt = Bcrypt(app)
 
 import paypalrestsdk
+from flask import redirect, request, flash
 
 ADMINEMAIL = "ardit.raseni@gmail.com"
 PASSWORD = "ardit12345"
@@ -93,6 +94,11 @@ def profile():
         return redirect("/")
     data = {"id": session["user_id"]}
     return render_template("profile.html", loggedUser=User.get_user_by_id(data))
+
+ 
+
+ 
+
 
 
 @app.route("/edit/user")
@@ -219,3 +225,52 @@ def paymentSuccess():
 def paymentCancel():
     flash("Payment was canceled", "paymentCanceled")
     return redirect("/pizzas")
+
+
+#@app.route("/update_profile", methods=["POST"])
+#def update_profile():
+  #  if "user_id" not in session:
+ #       return redirect("/")
+
+  #  data = {
+  #      "id": session["user_id"],
+  #      "first_name": request.form["first_name"],
+  #      "last_name": request.form["last_name"],
+   #     "email": request.form["email"],
+   #     "address": request.form["address"],
+ #       "city": request.form["city"],
+  #      "state": request.form["state"],
+        # Add other fields as needed
+  #  }
+
+   # User.update_profile(data)
+   # flash("User information updated successfully", "updateSuccess")
+   # return redirect("/profile")
+
+
+@app.route("/update_profile", methods=["POST"])
+def update_profile():
+    if "user_id" not in session:
+        return redirect("/")
+
+    data = {
+        "id": session["user_id"],
+        "first_name": request.form["first_name"],
+        "last_name": request.form["last_name"],
+        "email": request.form["email"],
+        "address": request.form["address"],
+        "city": request.form["city"],
+        "state": request.form["state"],
+    }
+
+    # Validate the form data
+    if not User.validate_userUpdate(data):
+        # If validation fails, redirect back to the profile page
+        return redirect("/profile")
+
+    # If validation passes, update the user profile
+    User.update_profile(data)
+
+    flash("User information updated successfully", "updateSuccess")
+    return redirect("/profile")
+

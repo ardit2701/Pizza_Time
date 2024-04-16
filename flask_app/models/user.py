@@ -46,10 +46,10 @@ class User:
         query = "INSERT INTO users (first_name, last_name, email, address, city, state, password, confirm_password, phone_number) VALUES (%(first_name)s, %(last_name)s, %(email)s,%(address)s,%(city)s,%(state)s, %(password)s, %(confirm_password)s, %(phone_number)s );"
         return connectToMySQL(cls.db_name).query_db(query, data)
 
-    @classmethod
-    def update(cls, data):
-        query = "UPDATE users set first_name = %(first_name)s, last_name = %(last_name)s WHERE id = %(id)s;"
-        return connectToMySQL(cls.db_name).query_db(query, data)
+    #@classmethod
+    #def update(cls, data):
+    #    query = "UPDATE users set first_name = %(first_name)s, last_name = %(last_name)s WHERE id = %(id)s;"
+    #    return connectToMySQL(cls.db_name).query_db(query, data)
 
     @classmethod
     def delete(cls, data):
@@ -97,3 +97,8 @@ class User:
             flash("Last name is required!", "last_nameRegister")
             is_valid = False
         return is_valid
+    
+    @staticmethod
+    def update_profile(data):
+        query = "UPDATE users SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s, address = %(address)s, city = %(city)s, state = %(state)s WHERE id = %(id)s;"
+        return connectToMySQL(cls.db_name).query_db(query, data)

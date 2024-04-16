@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Account</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossorigin="anonymous">
@@ -18,16 +18,33 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
+        .active {
+            color: red !important; /* Change the color as desired */
+        }
     </style>
 </head>
 
 <body>
     <nav class="d-flex justify-content-around bg-dark text-white align-items-center">
-        <h1>Pizza King</h1>
-        <a class="text-decoration-none text-white" href="/pizzas">Home</a>
-        <a class="text-decoration-none text-white" href="/profile">Account</a>
-        <a class="text-decoration-none text-white" href="/logout">Logout</a>
+        <h1>Pizza King🍕</h1>
+        <a class="text-decoration-none text-white" href="/pizzas" id="home-link">Home</a>
+        <a class="text-decoration-none text-white" href="/profile" id="profile-link">Account</a>
+        <a class="text-decoration-none text-white" href="/logout" id="logout-link">Logout</a>
     </nav>
+
+    <script>
+        // Get the current URL path
+        const path = window.location.pathname;
+        
+        // Check which link matches the current path and add the 'active' class
+        if (path === '/pizzas') {
+            document.getElementById('home-link').classList.add('active');
+        } else if (path === '/profile') {
+            document.getElementById('profile-link').classList.add('active');
+        } else if (path === '/logout') {
+            document.getElementById('logout-link').classList.add('active');
+        }
+    </script>
     <section class="h-100 h-custom gradient-custom-2">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -38,8 +55,9 @@
                                 <div class="col-lg-6">
                                     <div class="p-5">
                                         <h3 class="fw-normal mb-5" style="color: #000002;">Account Information</h3>
-                                        <form action="/register" method="post" class="w-100">
+                                         <form action="/register" method="post" class="w-100">
                                             <div class="row">
+                                            <form action="/update_profile" method="POST" class="w-100">
                                                 <div class="col-md-6 mb-4 pb-2">
                                                     <div class="form-outline">
                                                         <label class="form-label" for="first_name">First name</label>
@@ -136,8 +154,21 @@
                                             {% endfor %}
                                             {% endif %}
                                             {% endwith %}
-                                            <button type="submit" class="btn btn-primary">Update</button>
-                                        </form>
+                                            
+                                          
+                                              
+                                             <button type="submit" class="btn btn-primary">Update</button>
+                                          </form>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 bg-ind
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+      
+</html>
+                                
