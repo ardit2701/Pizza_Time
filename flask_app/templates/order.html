@@ -8,14 +8,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
-        
         body {
             background-image: url('https://i.pinimg.com/736x/15/8c/9f/158c9f7458a75d6dd5568b5affb6be82.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
-    
+
         .container {
             text-align: center;
         }
@@ -34,6 +33,50 @@
             margin-bottom: 10px;
         }
     </style>
+   <!-- Add this script to the first HTML page to redirect to the order confirmation page with the total price as a query parameter -->
+   <script>
+    function calculateTotal() {
+        var quantity = document.getElementById("quantity").value;
+        var basePrice = 10; // Example base price
+        var totalPrice = quantity * basePrice;
+
+        // Display total price for debugging
+        console.log("Total Price: $" + totalPrice);
+
+        // Update the total price display on the page
+        document.getElementById("totalPrice").textContent = "$" + totalPrice.toFixed(2);
+    }
+
+    
+  
+   
+    function redirectToOrderConfirmation() {
+        // Calculate the total price
+        var quantity = document.getElementById("quantity").value;
+        var basePrice = 10; // Example base price
+        var totalPrice = quantity * basePrice;
+
+        // Log the total price for debugging
+        console.log("Total Price:", totalPrice);
+
+        // Redirect to the order confirmation page with the total price as a query parameter
+        window.location.href = "/pizza?totalPrice=" + encodeURIComponent(totalPrice);
+    }
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+    
 </head>
 
 <body>
@@ -46,6 +89,9 @@
 
     <div class="d-flex flex-column align-items-center justify-content-center">
         <form action="/order" method="post" class="w-50 m-auto mt-5">
+
+            <!-- Other form fields -->
+            
 
             <div class="mb-3">
                 <label for="method" class="form-label">Method</label>
@@ -89,23 +135,20 @@
             {% endfor %}
             {% endif %}
             {% endwith %}
+            
+
             <div class="mb-3">
                 <label for="quantity" class="form-label">Quantity</label>
                 <input type="number" name="quantity" class="form-control" id="quantity" min="1" max="5">
             </div>
-            {% with messages = get_flashed_messages(category_filter=["quantity"]) %}
-            {% if messages %}
-            {% for message in messages %}
-            <p class="text-danger text-center">{{ message }}</p>
-            {% endfor %}
-            {% endif %}
-            {% endwith %}
+
             <div class="container">
-                <button class="btn btn-primary">Create pizza</button>
+                <button class="btn btn-primary" onclick="redirectToOrderConfirmation()">Create pizza</button>
+
+
             </div>
         </form>
     </div>
-</div>
 </body>
 
 </html>

@@ -100,5 +100,32 @@ class User:
     
     @staticmethod
     def update_profile(data):
-        query = "UPDATE users SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s, address = %(address)s, city = %(city)s, state = %(state)s WHERE id = %(id)s;"
+        query = "UPDATE users SET first_name = %(first_name)s, last_name = %(last_name)s"
+        if "email" in data:
+            query += ", email = %(email)s"
+        if "address" in data:
+            query += ", address = %(address)s"
+        if "city" in data:
+            query += ", city = %(city)s"
+        if "state" in data:
+            query += ", state = %(state)s"
+        if "phone_number" in data:
+            query += ", phone_number = %(phone_number)s"    
+        query += " WHERE user_id = %(id)s;"
+        return connectToMySQL(User.db_name).query_db(query, data)
+    
+    @classmethod
+    def createPayment(cls,data):
+        query = "INSERT INTO payments (ammount, status, member_id) VALUES (%(ammount)s, %(status)s, %(member_id)s);"
         return connectToMySQL(cls.db_name).query_db(query, data)
+    
+    @classmethod
+    def get_allUserPayments(cls, data):
+        query = "SELECT * FROM payments where member_id = %(id)s;"
+        results = connectToMySQL(cls.db_name).query_db(query, data)
+        payments = []
+        if results:
+            for pay in results:
+                payments.append(pay)
+        return payments
+        

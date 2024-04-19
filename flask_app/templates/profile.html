@@ -55,9 +55,8 @@
                                 <div class="col-lg-6">
                                     <div class="p-5">
                                         <h3 class="fw-normal mb-5" style="color: #000002;">Account Information</h3>
-                                         <form action="/register" method="post" class="w-100">
+                                        <form action="/update_profile" method="POST" class="w-100">
                                             <div class="row">
-                                            <form action="/update_profile" method="POST" class="w-100">
                                                 <div class="col-md-6 mb-4 pb-2">
                                                     <div class="form-outline">
                                                         <label class="form-label" for="first_name">First name</label>
@@ -154,11 +153,22 @@
                                             {% endfor %}
                                             {% endif %}
                                             {% endwith %}
-                                            
-                                          
-                                              
-                                             <button type="submit" class="btn btn-primary">Update</button>
-                                          </form>
+                                            <div class="mb-4 pb-2">
+                                                <div class="form-outline">
+                                                    <label class="form-label" for="phone_number">Phone Number</label>
+                                                    <input type="text" name="phone_number" value="{{loggedUser.phone_number}}"
+                                                        class="form-control" id="phone_number">
+                                                </div>
+                                                {% with messages = get_flashed_messages(category_filter=["phone_numberRegister"]) %}
+                                                {% if messages %}
+                                                {% for message in messages %}
+                                                <p class="text-danger text-center">{{ message }}</p>
+                                                {% endfor %}
+                                                {% endif %}
+                                                {% endwith %}
+                                            </div>                                             
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -169,6 +179,4 @@
         </div>
     </section>
 </body>
-      
 </html>
-                                

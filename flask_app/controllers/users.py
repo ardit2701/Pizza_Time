@@ -51,7 +51,7 @@ def register():
         "confirm_password": bcrypt.generate_password_hash(
             request.form["confirm_password"]
         ),
-        "phone_number": request.form["phonenumber"]
+        "phone_number": request.form["phone_number"]
     }
     session["user_id"] = User.create(data)
     return redirect("/")
@@ -261,6 +261,7 @@ def update_profile():
         "address": request.form["address"],
         "city": request.form["city"],
         "state": request.form["state"],
+        "phone_number": request.form["phone_number"],
     }
 
     # Validate the form data

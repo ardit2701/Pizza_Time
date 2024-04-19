@@ -21,26 +21,29 @@
             color: yellow;
         }
     </style>
-</head>
-<body>
-    <nav class="d-flex justify-content-around bg-dark text-white align-items-center">
-        <h1>Pizza King🍕</h1>
-        <a class="text-decoration-none text-white" href="/pizzas">Home</a>
-        <a class="text-decoration-none text-white" href="/profile">Account</a>
-        <a class="text-decoration-none text-white" href="/logout">Logout</a>
-    </nav>
-
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h2>LAST ORDER 😀</h2>
-                <p class="pizza-info">Method: {{ pizza.method }}</p>
-                <p class="pizza-info">Crust: {{ pizza.crust }}</p>
-                <p class="pizza-info">Size: {{ pizza.size }}</p>
-                <p class="pizza-info">Quantity: {{ pizza.quantity }}</p>
-                <a class="btn btn-warning" href="/edit/pizza/{{ pizza.id }}">Buy</a>
-            </div>
-        </div>
-    </div>
+ <h2>LAST ORDER 😀</h2>
+ <div class="container">
+     <div class="row">
+         <div class="col">
+             <p class="pizza-info">Method: {{ pizza.method }}</p>
+             <p class="pizza-info">Crust: {{ pizza.crust }}</p>
+             <p class="pizza-info">Size: {{ pizza.size }}</p>
+             <p class="pizza-info">Quantity: {{ pizza.quantity }}</p>
+             <p class="pizza-info">Total Price: $<span id="lastOrderTotalPrice"></span></p>
+             <!-- Display other order details here -->
+         </div>
+     </div>
+ </div>
+    <a href="/checkout/paypal"><span id="pay"></span><span id="pal"></span><span id="checkout" class="mx-3">Checkout</span></a>
+    <script>
+        // Retrieve total price from URL query parameter
+        var urlParams = new URLSearchParams(window.location.search);
+        var totalPrice = urlParams.get('totalPrice');
+    
+        // Display total price wherever needed
+        document.getElementById("lastOrderTotalPrice").textContent = totalPrice;
+    </script>
+    
 </body>
 </html>
+
